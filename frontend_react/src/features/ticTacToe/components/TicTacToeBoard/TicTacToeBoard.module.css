@@ -1,0 +1,22 @@
+.boardWrap {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  width: min(520px, 92vw);
+  aspect-ratio: 1 / 1;
+
+  padding: 12px;
+  border-radius: 22px;
+
+  border: 2px solid var(--retro-border);
+  background: radial-gradient(1200px circle at top, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.35));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}

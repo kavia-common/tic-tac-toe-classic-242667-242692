@@ -1,0 +1,39 @@
+.btn {
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+
+  padding: 0.8rem 1.05rem;
+  border-radius: 14px;
+
+  border: 2px solid var(--retro-border);
+  color: var(--retro-text);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18));
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 0 rgba(0, 0, 0, 0.35);
+}
+
+.btn:active {
+  transform: translateY(6px);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.primary {
+  background-color: var(--retro-accent);
+}
+
+.secondary {
+  background-color: rgba(255, 255, 255, 0.06);
+}

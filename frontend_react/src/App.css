@@ -1,104 +1,130 @@
-/* CSS Variables for Theme Management */
+/* Retro theme + layout styles.
+   Keep a small variable surface for easy theming and future expansion. */
+
 :root {
-  /* Light theme colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #282c34;
-  --text-secondary: #61dafb;
-  --border-color: #e9ecef;
-  --button-bg: #007bff;
-  --button-text: #ffffff;
+  --retro-bg: #0b1020;
+  --retro-surface: rgba(255, 255, 255, 0.04);
+  --retro-text: #eef2ff;
+  --retro-text-muted: rgba(238, 242, 255, 0.72);
+  --retro-border: rgba(255, 255, 255, 0.16);
+
+  --retro-accent: rgba(88, 101, 242, 0.35);
+  --retro-x: #22c55e;
+  --retro-o: #f59e0b;
+
+  --focus: rgba(97, 218, 251, 0.85);
 }
 
-[data-theme="dark"] {
-  /* Dark theme colors */
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #282c34;
-  --text-primary: #ffffff;
-  --text-secondary: #61dafb;
-  --border-color: #404040;
-  --button-bg: #0056b3;
-  --button-text: #ffffff;
+[data-theme="light"] {
+  --retro-bg: #f9fafb;
+  --retro-surface: rgba(17, 24, 39, 0.04);
+  --retro-text: #111827;
+  --retro-text-muted: rgba(17, 24, 39, 0.7);
+  --retro-border: rgba(17, 24, 39, 0.18);
+
+  --retro-accent: rgba(55, 65, 81, 0.12);
+  --retro-x: #16a34a;
+  --retro-o: #d97706;
+
+  --focus: rgba(37, 99, 235, 0.75);
 }
 
 .App {
-  text-align: center;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background: radial-gradient(1200px circle at top, rgba(99, 102, 241, 0.18), transparent 55%),
+    radial-gradient(900px circle at bottom, rgba(34, 197, 94, 0.12), transparent 50%),
+    var(--retro-bg);
+  color: var(--retro-text);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: var(--bg-secondary);
+.appShell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: var(--text-primary);
-  transition: background-color 0.3s ease;
-  position: relative;
+  padding: 1.1rem;
 }
 
-.App-link {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.topBar {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.topBarActions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .theme-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--retro-text);
+  border: 2px solid var(--retro-border);
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 120ms ease, opacity 120ms ease, background-color 120ms ease;
 }
 
 .theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .theme-toggle:active {
-  transform: translateY(0);
+  transform: translateY(2px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
 }
 
-/* Responsive design for mobile */
-@media (max-width: 768px) {
-  .theme-toggle {
-    top: 10px;
-    right: 10px;
-    padding: 8px 16px;
-    font-size: 12px;
+.gameLayout {
+  width: min(980px, 100%);
+  margin: 1.25rem auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.controls {
+  width: 100%;
+  max-width: 520px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.hint {
+  margin: 0.25rem 0 0;
+  max-width: 520px;
+  text-align: center;
+  color: var(--retro-text-muted);
+  font-weight: 600;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  text-align: center;
+  color: var(--retro-text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Small screens: keep things comfortable */
+@media (max-width: 520px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .appShell {
+    padding: 0.9rem;
   }
 }

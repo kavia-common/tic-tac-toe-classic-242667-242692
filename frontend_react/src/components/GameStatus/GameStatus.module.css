@@ -1,0 +1,56 @@
+.wrap {
+  width: 100%;
+  max-width: 520px;
+  padding: 0.85rem 0.9rem;
+  border-radius: 16px;
+  border: 2px solid var(--retro-border);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.message {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 0.65rem;
+  border-radius: 999px;
+  border: 2px solid var(--retro-border);
+  color: var(--retro-text);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+.badge[data-state="turn"] {
+  background: rgba(88, 101, 242, 0.25);
+}
+
+.badge[data-state="win"] {
+  background: rgba(22, 163, 74, 0.25);
+}
+
+.badge[data-state="draw"] {
+  background: rgba(239, 68, 68, 0.18);
+}
+
+.text {
+  font-weight: 800;
+  color: var(--retro-text);
+}
+
+.secondary {
+  margin-top: 0.35rem;
+  text-align: center;
+  color: var(--retro-text-muted);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
